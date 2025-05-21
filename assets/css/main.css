@@ -1769,7 +1769,7 @@ input, select, textarea {
         padding: 0;
         border: none;
         outline: none;
-        background-size: contain;
+        background-size: 45%;
         background-repeat: no-repeat;
         background-position: center;
         margin-left: 1rem;
@@ -1787,12 +1787,12 @@ input, select, textarea {
 
     /* Set initial background image (play state) */
     #music-toggle {
-        background-image: url("../../images/play.png");
+        background-image: url("../../images/music-toggle.png");
     }
 
     /* Switch to pause image when paused */
     #music-toggle.paused {
-        background-image: url("../../images/pause.png");
+        background-image: url("../../images/music-toggle.png");
     }
 
     /* Adjust for vertical layout (below 480px) */
@@ -1895,12 +1895,6 @@ input, select, textarea {
         text-align: center;
     }
     */
-    /* Hide map container when article is visible */
-    body.is-article-visible #map-below-text, body.is-article-visible #map-container {
-        opacity: 0;
-        display: none; /* Ensure it doesn't take up space */
-    }
-
     /* Map Buttons */
     .map-button {
         display: block;
@@ -1910,7 +1904,7 @@ input, select, textarea {
         border-radius: 50%;
         background-color: #c91c49cc;
         border: solid 1px #eae2de;
-        background-size: 60%;
+        background-size: 15%;
         background-position: center;
         background-repeat: no-repeat;
         -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -1921,16 +1915,8 @@ input, select, textarea {
     }
 
     /* Dynamically set background image using data-symbol */
-    .map-button[data-symbol="images/icon-resort.png"] {
-        background-image: url("../../images/icon-resort.png");
-    }
-
-    .map-button[data-symbol="images/icon-spa.png"] {
-        background-image: url("../../images/icon-spa.png");
-    }
-
-    .map-button[data-symbol="images/icon-dining.png"] {
-        background-image: url("../../images/icon-dining.png");
+    .map-button[data-symbol="images/info.png"] {
+        background-image: url("../../images/info.png");
     }
 
     /* Hover and active states */
@@ -1979,6 +1965,11 @@ input, select, textarea {
             height: 2rem;
             background-size: 50%;
         }
+    }
+    /* Hide map container when article is visible */
+    body.is-article-visible #map-below-text, body.is-article-visible #map-container {
+        opacity: 0;
+        display: none; /* Ensure it doesn't take up space */
     }
 /* Main */
     #main {
