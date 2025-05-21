@@ -1054,10 +1054,10 @@ input, select, textarea {
 
     #video-container {
         position: relative;
-        width: 75%;
+        width: 85%;
         max-width: 64rem;
         background: #2b2d2dcc;
-        border: solid 1px #ffffff;
+        /*border: solid 1px #ffffff;*/
         border-radius: 4px;
         padding: 2rem;
         box-sizing: border-box;
@@ -1075,7 +1075,7 @@ input, select, textarea {
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0.5rem 5rem;
-        background-color: #2b2d2dcc;
+        background-color: #c91c49cc;
         /* border: solid 1px #ffffff; */
         border-radius: 10px;
         color: #ffffff;
@@ -1093,7 +1093,7 @@ input, select, textarea {
     }
 
     #video-title:active {
-        background-color: rgba(255, 255, 255, 0.175);
+        background-color: rgba(237, 148, 255, 0.175);
     }
 
     #video-title.hidden {
@@ -1322,6 +1322,7 @@ input, select, textarea {
         background-color: #eae2de; /* Solid box background */
         padding: 2rem; /* Padding inside the box */
         width: 100%; /* Constrain the width of the box */
+       
         text-align: center;
     }
 
@@ -1847,11 +1848,12 @@ input, select, textarea {
         }
     }
 /* Map */
+   /* Map Container */
     #map-container {
         display: flex;
         flex-direction: row;
         width: 100%;
-        margin: 0; /* No space between header and this section */
+        margin: auto; /* No space between header and this section */
         z-index: 2; /* Below header (z-index: 3) but above bg (z-index: 1) */
         -moz-transition: opacity 0.325s ease-in-out;
         -webkit-transition: opacity 0.325s ease-in-out;
@@ -1861,35 +1863,38 @@ input, select, textarea {
 
     /* Map Section (Left) */
     #map {
-        flex: 1 1 75%; /* Adjustable: Change this percentage to adjust horizontal spacing */
+        flex: 1 1 90%; /* Adjustable: Change this percentage to adjust horizontal spacing */
         position: relative;
         background-image: url("../../images/map.png");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        padding-bottom: 60%; /* Maintain aspect ratio; adjust as needed */
+        padding-bottom: 90%; /* Maintain aspect ratio; adjust as needed */
         height: 0;
     }
 
-    /* Text Section (Right) */
+    /*
+    /* Text Section (Right) 
     #map-text {
-        flex: 1 1 49%; /* Adjustable: Change this percentage to adjust horizontal spacing */
-        background-color: #eae2decc; /* Match article background */
+        flex: 1 1 25%; /* Adjustable: Change this percentage to adjust horizontal spacing 
+        background-color: #eae2decc;
         padding: 2rem;
         box-sizing: border-box;
         color: #2b2d2d;
+        max-height: 50%; /* Limits vertical height to 50% of container height
+        overflow-y: auto; /* Adds scroll if content exceeds height
     }
 
-    /* Additional Text Section Below */
+    /* Additional Text Section Below 
     #map-below-text {
         width: 100%;
-        background-color: #f3775e; /* Consistent background */
+        background-color: #f3775e; /* Consistent background 
         padding: 2rem;
         box-sizing: border-box;
         color: #ffffff;
         text-align: center;
     }
-
+    */
     /* Hide map container when article is visible */
     body.is-article-visible #map-below-text, body.is-article-visible #map-container {
         opacity: 0;
@@ -2113,6 +2118,7 @@ input, select, textarea {
         width: 100%; /* Constrain the width of the box */
         text-align: center;
         color: #ffffff;
+        margin-top: auto;
     }
         #footer .copyright {
             letter-spacing: 0.2rem;
