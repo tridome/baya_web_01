@@ -56,14 +56,24 @@
 									<li class="dropdown">
 										<a href="#">Structures</a>
 										<ul class="dropdown-menu">
-											<li><a href="#work">One Bedroom</a></li>
-											<li><a href="#vibe-check">Two Bedroom</a></li>
-											<li><a href="#">Community Space</a></li>
+											<li><a href="#one-bed">One Bedroom</a></li>
+											<li><a href="#two-bed">Two Bedroom</a></li>
+											<li><a href="#com-space">Community Space</a></li>
 										</ul>
 									</li>
-									<li><a href="#about">Tridome Team</a></li>
-									<li><a href="#contact">Tridome Method</a></li>
-									<li><a href="#elements">Site Map</a></li>
+									<li><a href="#team">Tridome Team</a></li>
+									<li><a href="#method">Tridome Method</a></li>
+									<li class="dropdown">
+										<a href="#">Tridome Proposal</a>
+										<ul class="dropdown-menu">
+											<li><a href="#one-bed-full">One Bedroom Specifications</a></li>
+											<li><a href="#two-bed-full">Two Bedroom Specifications</a></li>
+											<li><a href="#com-space-full">Community Space Specifications</a></li>
+											<li><a href="#all-specs">All structures Specifications</a></li>
+											<li><a href="#all-specs-download">Download All Specs</a></li>
+										</ul>
+									</li>
+									<li><a href="#elements">TEMP Elements</a></li>
 								</ul>
 							</nav>
 							<button id="music-toggle" class="music-toggle" title="Toggle Music" data-play="images/music-toggle.png" data-pause="images/music-toggle.png"></button>
@@ -73,9 +83,9 @@
 				<!-- Map -->
 					<div id="map-container">
 						<div id="map">
-							<a href="#elements" class="map-button" style="top: 30%; left: 30%;" data-symbol="images/info.png"></a>
-							<a href="#spa" class="map-button" style="top: 61%; left: 25%;" data-symbol="images/info.png"></a>
-							<a href="#dining" class="map-button" style="top: 40%; right: 40%;" data-symbol="images/info.png"></a>
+							<a href="#one-bed" class="map-button" style="top: 30%; left: 30%;" data-symbol="images/info.png"></a>
+							<a href="#two-bed" class="map-button" style="top: 61%; left: 25%;" data-symbol="images/info.png"></a>
+							<a href="#com-space" class="map-button" style="top: 40%; right: 40%;" data-symbol="images/info.png"></a>
 						</div>
 						<!--
 						<div id="map-text">
@@ -86,9 +96,16 @@
 					</div>
 				<!-- Main -->
 					<div id="main">
-
-						<!-- Intro -->
-							<article id="vibe-check">
+						<!-- One Bedroom -->
+							<article id="one-bed">
+								<h2 class="major">One Bedroom</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+							</article>
+							
+						<!-- Two Bedroom -->
+							<article id="two-bed">
 								<h2 class="major">Two Bedroom</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p>BAYA: <a href="https://tridomestructures.com/">VIEW BUILDING HERE</a></p>
@@ -96,26 +113,59 @@
 								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
 							</article>
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">One Bedroom</h2>
+						<!-- Community Space -->
+							<article id="com-space">
+								<h2 class="major">Comunity Space</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
 								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
 
-						<!-- About -->
-							<article id="about">
+						<!-- Team -->
+							<article id="team">
 								<h2 class="major">Tridome Team</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
 							</article>
-
-						<!-- Contact -->
-							<article id="contact">
+							
+						<!-- Method -->
+							<article id="method">
 								<h2 class="major">Tridome Method</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
 								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+							</article>
+
+						<!-- One Bedroom Full -->
+							<article id="one-bed-full">
+								<h2 class="major">One Bedroom Specifications</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+							</article>
+
+						<!-- Two Bedroom Full -->
+							<article id="two-bed-full">
+								<h2 class="major">Two Bedroom Specifications</h2>
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<p>BAYA: <a href="https://tridomestructures.com/">VIEW BUILDING HERE</a></p>
+								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+							</article>
+
+						<!-- Community Space Full-->
+							<article id="com-space-full">
+								<h2 class="major">Comunity Space Specifications</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+							</article>
+
+						<!-- All Specs -->
+							<article id="all-specs">
+								<h2 class="major">All structures Specifications</h2>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
+								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
 							</article>
 
 

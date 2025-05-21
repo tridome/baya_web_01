@@ -2001,8 +2001,8 @@ input, select, textarea {
         max-width: 100%;
         width: 100%;
         padding-top: 3rem;
-        padding-left: 1rem; /* Add left padding to #main */
-        padding-right: 1rem;
+        padding-left: 0.5rem; /* Add left padding to #main */
+        padding-right: 0.5rem;
         z-index: 3;
     }
         #main article {
@@ -2016,11 +2016,18 @@ input, select, textarea {
             transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
             padding: 4.5rem 2.5rem 1.5rem 2.5rem;
             position: relative;
-            width: 40rem;
+            width: 60rem;
             max-width: 100%;
             background-color: #eae2decc;
             border-radius: 4px;
             opacity: 0;
+        }
+        #main article h1,
+        #main article h2,
+        #main article .title {
+            white-space: normal;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
             #main article.active {
                 -moz-transform: translateY(0);
