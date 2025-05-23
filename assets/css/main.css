@@ -2023,6 +2023,7 @@ input, select, textarea {
             border-radius: 4px;
             opacity: 0;
         }
+        /* Ensure the article container handles the title and columns separately */
         #main article h1,
         #main article h2,
         #main article .title {
