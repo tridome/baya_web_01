@@ -186,6 +186,17 @@
 		}).triggerHandler('resize.flexbox-fix');
 	}
 
+	// the other buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const flowcharts = document.querySelectorAll('.flowchart');
+    flowcharts.forEach(flowchart => {
+        const header = flowchart.querySelector('.flowchart-header');
+        header.addEventListener('click', () => {
+            flowchart.classList.toggle('visible');
+        });
+    });
+});
+	
 	// Nav.
 	var $nav = $header.children('nav'),
 		$nav_li = $nav.find('li');
