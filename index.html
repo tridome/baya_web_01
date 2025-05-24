@@ -165,14 +165,24 @@
 								<section>
 									<p>Use the controls below to explore, or scroll down for more information!</p>
 									<div class="video-container">
-										<video controls width="100%" height="auto">
-											<source src="assets/video/intro-video.mp4" type="video/mp4">
-											Your browser does not support the video tag.
-										</video>
+										<iframe src="https://www.youtube.com/embed/LFmz_nuj5W0" frameborder="0" allowfullscreen></iframe>
 									</div>
-									<div class="video-container">
-										<iframe width="100%" height="500" src="https://www.youtube.com/embed/LFmz_nuj5W0" title="Community Space Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-									</div>
+
+									<style>
+										.video-container {
+										position: relative;
+										width: 100%;
+										padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 * 100) */
+										height: 0;
+										}
+										.video-container iframe {
+										position: absolute;
+										top: 0;
+										left: 0;
+										width: 100%;
+										height: 100%;
+										}
+									</style>
 								</section>
 								<hr />
 								<section>
