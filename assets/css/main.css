@@ -151,10 +151,8 @@ input, select, textarea {
         }
         h1.major, h2.major, h3.major, h4.major, h5.major, h6.major {
             border-bottom: solid 1px #2b2d2d;
-            width: -moz-max-content;
-            width: -webkit-max-content;
-            width: -ms-max-content;
-            width: max-content;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
             padding-bottom: 0.5rem;
             margin: 0 0 2rem 0;
         }
