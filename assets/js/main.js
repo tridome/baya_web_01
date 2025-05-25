@@ -92,7 +92,7 @@
             videoId: 'fli3EuemCxI',
             playerVars: {
                 'playsinline': 1,
-                'controls': 0,
+                'controls': 1,
                 'showinfo': 0,
                 'rel': 0,
                 'modestbranding': 1
