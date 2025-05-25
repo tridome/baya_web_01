@@ -2111,13 +2111,13 @@ input, select, textarea {
 
     /* Map Section (Left) */
     #map {
-        flex: 1 1 90%; /* Adjustable: Change this percentage to adjust horizontal spacing */
+        flex: 1 1 70%; /* Adjustable: Change this percentage to adjust horizontal spacing */
         position: relative;
         background-image: url("../../images/map.png");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        padding-bottom: 90%; /* Maintain aspect ratio; adjust as needed */
+        padding-bottom: 70%; /* Maintain aspect ratio; adjust as needed */
         height: 0;
     }
 
