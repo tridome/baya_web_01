@@ -16,22 +16,19 @@
 	</head>
 	<body class="is-preload">
 		<!-- Video Overlay -->
-			<div id="video-overlay">
-				<div id="video-container">
-					<video id="intro-video" playsinline>
-						<source src="assets/video/intro-video-FAKE.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
-					<div id="video-title">Enter Baya</div>
-				</div>
-				<div id="video-controls">
-					<button id="toggle-video" class="control-button">Play</button>
-					<button id="restart-video" class="control-button">Restart</button>
-					<progress id="video-progress" value="0" max="100"></progress>
-					<span id="video-time">0:00 / 0:00</span>
-					<button id="skip-video" class="skip-button">Skip</button>
-				</div>
-			</div>
+<div id="video-overlay">
+    <div id="video-container">
+        <div id="youtube-player"></div> <!-- Container for YouTube IFrame -->
+        <div id="video-title">Enter Baya</div>
+    </div>
+    <div id="video-controls">
+        <button id="toggle-video" class="control-button">Play</button>
+        <button id="restart-video" class="control-button">Restart</button>
+        <progress id="video-progress" value="0" max="100"></progress>
+        <span id="video-time">0:00 / 0:00</span>
+        <button id="skip-video" class="skip-button">Skip</button>
+    </div>
+</div>
 
 
 		<!-- Wrapper -->
@@ -348,6 +345,7 @@
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
+			<script src="https://www.youtube.com/iframe_api"></script>
 			<script src="assets/js/main.js"></script>
 			<!--<script src="assets/js/dropdown.js"></script>-->
 

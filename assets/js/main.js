@@ -4,167 +4,241 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 	forcing an update
 */
-
 (function($) {
+    var $window = $(window),
+        $body = $('body'),
+        $wrapper = $('#wrapper'),
+        $header = $('#header'),
+        $footer = $('#footer'),
+        $main = $('#main'),
+        $main_articles = $main.children('article'),
+        $music = $('#background-music');
 
-	var	$window = $(window),
-		$body = $('body'),
-		$wrapper = $('#wrapper'),
-		$header = $('#header'),
-		$footer = $('#footer'),
-		$main = $('#main'),
-		$main_articles = $main.children('article'),
-		$music = $('#background-music');
+    // Video Overlay.
+    var $videoOverlay = $('#video-overlay'),
+        $videoTitle = $('#video-title'),
+        $toggleVideo = $('#toggle-video'),
+        $restartVideo = $('#restart-video'),
+        $skipVideo = $('#skip-video'),
+        $videoProgress = $('#video-progress'),
+        $videoTime = $('#video-time'),
+        player;
 
-	// Video Overlay.
-	var $videoOverlay = $('#video-overlay'),
-		$introVideo = $('#intro-video'),
-		$videoTitle = $('#video-title'),
-		$toggleVideo = $('#toggle-video'),
-		$restartVideo = $('#restart-video'),
-		$skipVideo = $('#skip-video'),
-		$videoProgress = $('#video-progress'),
-		$videoTime = $('#video-time');
+    // Function to hide video overlay and show content.
+    function hideVideoOverlay() {
+        console.log('Hiding video overlay');
+        $videoOverlay.addClass('hidden');
+        $wrapper.addClass('visible');
+        if ($music.length) {
+            $music[0].muted = false;
+            $music[0].play().catch(function(error) {
+                console.error('Music playback failed:', error);
+            });
+        }
+    }
 
-	// Function to hide video overlay and show content.
-	function hideVideoOverlay() {
-		console.log('Hiding video overlay');
-		$videoOverlay.addClass('hidden');
-		$wrapper.addClass('visible');
-		if ($music.length) {
-			$music[0].muted = false;
-			$music[0].play().catch(function(error) {
-				console.log('Music play failed:', error);
-			});
-		}
-	}
+    // Function to show and reset video overlay.
+    function showVideoOverlay() {
+        console.log('Showing video overlay, hash:', location.hash);
+        if ($videoOverlay.hasClass('hidden')) {
+            $videoOverlay.removeClass('hidden');
+            $wrapper.removeClass('visible');
+            if (player) {
+                player.seekTo(0);
+                player.pauseVideo();
+                $toggleVideo.text('Play');
+                $videoTitle.removeClass('hidden');
+                $videoProgress.val(0);
+                updateTimeDisplay(0, player.getDuration() || 0);
+            } else {
+                console.warn('YouTube player not initialized, retrying to initialize');
+                initializePlayer();
+            }
+        }
+    }
 
-	// Function to show and reset video overlay.
-	function showVideoOverlay() {
-		console.log('Showing video overlay, hash:', location.hash);
-		if ($videoOverlay.hasClass('hidden')) {
-			$videoOverlay.removeClass('hidden');
-			$wrapper.removeClass('visible');
-			$introVideo[0].currentTime = 0;
-			$introVideo[0].pause();
-			$toggleVideo.text('Play');
-			$videoTitle.removeClass('hidden');
-			$videoProgress.val(0);
-			updateTimeDisplay(0, $introVideo[0].duration || 0);
-		}
-	}
+    // Update progress bar and time display.
+    function updateProgress() {
+        if (player && player.getDuration()) {
+            var currentTime = player.getCurrentTime();
+            var duration = player.getDuration();
+            var percent = (currentTime / duration) * 100;
+            $videoProgress.val(percent);
+            updateTimeDisplay(currentTime, duration);
+        }
+    }
 
-	// Update progress bar and time display.
-	function updateProgress() {
-		if ($introVideo[0].duration) {
-			var percent = ($introVideo[0].currentTime / $introVideo[0].duration) * 100;
-			$videoProgress.val(percent);
-			updateTimeDisplay($introVideo[0].currentTime, $introVideo[0].duration);
-		}
-	}
+    // Format time as MM:SS.
+    function formatTime(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var secs = Math.floor(seconds % 60);
+        return minutes + ':' + (secs < 10 ? '0' : '') + secs;
+    }
 
-	// Format time as MM:SS.
-	function formatTime(seconds) {
-		var minutes = Math.floor(seconds / 60);
-		var secs = Math.floor(seconds % 60);
-		return minutes + ':' + (secs < 10 ? '0' : '') + secs;
-	}
+    // Update time display.
+    function updateTimeDisplay(currentTime, duration) {
+        $videoTime.text(formatTime(currentTime) + ' / ' + formatTime(duration));
+    }
 
-	// Update time display.
-	function updateTimeDisplay(currentTime, duration) {
-		$videoTime.text(formatTime(currentTime) + ' / ' + formatTime(duration));
-	}
+    // Initialize YouTube player.
+    function initializePlayer() {
+        if (typeof YT === 'undefined' || !YT.Player) {
+            console.warn('YouTube API not loaded, retrying in 1 second');
+            setTimeout(initializePlayer, 1000);
+            return;
+        }
+        console.log('Initializing YouTube player');
+        player = new YT.Player('youtube-player', {
+            videoId: 'fli3EuemCxI',
+            playerVars: {
+                'playsinline': 1,
+                'controls': 0,
+                'showinfo': 0,
+                'rel': 0,
+                'modestbranding': 1
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
+                'onError': onPlayerError
+            }
+        });
+    }
 
-	// Video setup.
-	if ($videoOverlay.length && $introVideo.length && $videoTitle.length && $toggleVideo.length && $restartVideo.length && $skipVideo.length && $videoProgress.length && $videoTime.length) {
-		$videoTitle.on('click', function() {
-			$introVideo[0].play().catch(function(error) {
-				console.log('Video play failed:', error);
-			});
-			$videoTitle.addClass('hidden');
-		});
+    // When the player is ready.
+    function onPlayerReady(event) {
+        console.log('YouTube player ready');
+        updateTimeDisplay(0, player.getDuration() || 0);
+        setInterval(updateProgress, 1000);
+    }
 
-		$toggleVideo.on('click', function() {
-			if ($introVideo[0].paused) {
-				$introVideo[0].play().catch(function(error) {
-					console.log('Video play failed:', error);
-				});
-				$toggleVideo.text('Pause');
-				$videoTitle.addClass('hidden');
-			} else {
-				$introVideo[0].pause();
-				$toggleVideo.text('Play');
-			}
-		});
+    // Handle player state changes.
+    function onPlayerStateChange(event) {
+        console.log('Player state changed:', event.data);
+        if (event.data === YT.PlayerState.ENDED) {
+            hideVideoOverlay();
+        } else if (event.data === YT.PlayerState.PLAYING) {
+            $toggleVideo.text('Pause');
+            $videoTitle.addClass('hidden');
+        } else if (event.data === YT.PlayerState.PAUSED) {
+            $toggleVideo.text('Play');
+        }
+    }
 
-		$restartVideo.on('click', function() {
-			$introVideo[0].currentTime = 0;
-			$introVideo[0].pause();
-			$toggleVideo.text('Play');
-			$videoTitle.removeClass('hidden');
-			$videoProgress.val(0);
-			updateTimeDisplay(0, $introVideo[0].duration || 0);
-		});
+    // Handle player errors.
+    function onPlayerError(event) {
+        console.error('YouTube player error:', event.data);
+        alert('Failed to load YouTube video. Please check your internet connection or try again later.');
+    }
 
-		$introVideo.on('timeupdate', updateProgress);
+    // YouTube IFrame API setup.
+    window.onYouTubeIframeAPIReady = function() {
+        console.log('YouTube IFrame API ready');
+        initializePlayer();
+    };
 
-		$videoProgress.on('click', function(e) {
-			var pos = (e.pageX - $(this).offset().left) / $(this).width();
-			$introVideo[0].currentTime = pos * $introVideo[0].duration;
-			updateProgress();
-		});
+    // Video setup.
+    if ($videoOverlay.length && $videoTitle.length && $toggleVideo.length && $restartVideo.length && $skipVideo.length && $videoProgress.length && $videoTime.length) {
+        $videoTitle.on('click', function() {
+            if (player) {
+                player.playVideo();
+                $videoTitle.addClass('hidden');
+            } else {
+                console.warn('Player not ready for title click');
+            }
+        });
 
-		$introVideo.on('ended', function() {
-			hideVideoOverlay();
-		});
+        $toggleVideo.on('click', function() {
+            if (player) {
+                if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                    $toggleVideo.text('Play');
+                } else {
+                    player.playVideo();
+                    $toggleVideo.text('Pause');
+                    $videoTitle.addClass('hidden');
+                }
+            } else {
+                console.warn('Player not ready for toggle');
+            }
+        });
 
-		$skipVideo.on('click', function() {
-			$introVideo[0].pause();
-			hideVideoOverlay();
-		});
+        $restartVideo.on('click', function() {
+            if (player) {
+                player.seekTo(0);
+                player.pauseVideo();
+                $toggleVideo.text('Play');
+                $videoTitle.removeClass('hidden');
+                $videoProgress.val(0);
+                updateTimeDisplay(0, player.getDuration() || 0);
+            } else {
+                console.warn('Player not ready for restart');
+            }
+        });
 
-		$window.on('hashchange', function(event) {
-			console.log('Hash changed to:', location.hash);
-			if (location.hash === '#play-video') {
-				event.preventDefault();
-				event.stopPropagation();
-				showVideoOverlay();
-			} else if (location.hash === '' || location.hash === '#') {
-				event.preventDefault();
-				event.stopPropagation();
-				$main._hide();
-			} else if ($main_articles.filter(location.hash).length > 0) {
-				event.preventDefault();
-				event.stopPropagation();
-				$main._show(location.hash.substr(1));
-			}
-		});
+        $videoProgress.on('click', function(e) {
+            if (player && player.getDuration()) {
+                var pos = (e.pageX - $(this).offset().left) / $(this).width();
+                var newTime = pos * player.getDuration();
+                player.seekTo(newTime, true);
+                updateProgress();
+            } else {
+                console.warn('Player not ready for progress click');
+            }
+        });
 
-		$(document).ready(function() {
-			console.log('Document ready, initial hash:', location.hash);
-			if (location.hash === '#play-video') {
-				showVideoOverlay();
-			}
-			// Direct click handler for Intro link
-			$('a[href="#play-video"]').on('click', function(e) {
-				e.preventDefault();
-				showVideoOverlay();
-				location.hash = '#play-video';
-			});
-		});
-	} else {
-		console.error('Video overlay elements not found:', {
-			videoOverlay: $videoOverlay.length,
-			introVideo: $introVideo.length,
-			videoTitle: $videoTitle.length,
-			toggleVideo: $toggleVideo.length,
-			restartVideo: $restartVideo.length,
-			skipVideo: $skipVideo.length,
-			videoProgress: $videoProgress.length,
-			videoTime: $videoTime.length
-		});
-		$wrapper.addClass('visible');
-	}
+        $skipVideo.on('click', function() {
+            if (player) {
+                player.pauseVideo();
+            }
+            hideVideoOverlay();
+        });
+
+        $window.on('hashchange', function(event) {
+            console.log('Hash changed to:', location.hash);
+            if (location.hash === '#play-video') {
+                event.preventDefault();
+                event.stopPropagation();
+                showVideoOverlay();
+            } else if (location.hash === '' || location.hash === '#') {
+                event.preventDefault();
+                event.stopPropagation();
+                $main._hide();
+            } else if ($main_articles.filter(location.hash).length > 0) {
+                event.preventDefault();
+                event.stopPropagation();
+                $main._show(location.hash.substr(1));
+            }
+        });
+
+        $(document).ready(function() {
+            console.log('Document ready, initial hash:', location.hash);
+            if (location.hash === '#play-video') {
+                showVideoOverlay();
+            }
+            // Trigger API load if not already loaded
+            if (!window.YT) {
+                console.log('Loading YouTube API manually');
+                var tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+        });
+    } else {
+        console.error('Video overlay elements not found:', {
+            videoOverlay: $videoOverlay.length,
+            videoTitle: $videoTitle.length,
+            toggleVideo: $toggleVideo.length,
+            restartVideo: $restartVideo.length,
+            skipVideo: $skipVideo.length,
+            videoProgress: $videoProgress.length,
+            videoTime: $videoTime.length
+        });
+        $wrapper.addClass('visible');
+    }
+
+
 
 	// Play initial animations on page load.
 	$window.on('load', function() {
