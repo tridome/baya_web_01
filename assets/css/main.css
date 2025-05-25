@@ -1394,8 +1394,8 @@ input, select, textarea {
 
     #skip-video {
         position: absolute;
-        top: 2rem;
-        right: 2rem;
+        top: 1rem;
+        right: 1rem;
         padding: 0.25rem 0.75rem;
         background-color: #2b2d2d;
         color: #ffffff;
