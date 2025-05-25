@@ -1034,7 +1034,7 @@ input, select, textarea {
 .flowchart-container {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -1044,13 +1044,13 @@ input, select, textarea {
 
 .flowchart {
     width: 100%;
-    max-width: 300px;
+    max-width: 500px;
     text-align: center;
     position: relative;
 }
 
 .flowchart .flowchart-header {
-    width: 260px;
+    width: 400px;
     height: 40px;
     border-radius: 5px;
     background-color: #c91c49cc;
@@ -1064,7 +1064,7 @@ input, select, textarea {
 }
 
 .flowchart.visible .flowchart-header {
-    width: 300px;
+    width:500px;
 }
 
 .mobile .flowchart .flowchart-header {
@@ -1094,7 +1094,7 @@ input, select, textarea {
 }
 
 .flowchart .flowchart-text {
-    width: 300px;
+    width: 500px;
     max-width: 100%;
     height: 0;
     overflow: hidden;
