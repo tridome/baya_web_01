@@ -15,22 +15,33 @@
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#video-container-real {
+				position: relative;
+				width: 100%;
+				height: 0;
+				padding-bottom: 56.25%; /* 16:9 aspect ratio */
+			}
+			#video-container-real iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<!-- Video Overlay -->
-<div id="video-overlay">
-    <div id="video-container">
-        <div id="youtube-player"></div> <!-- Container for YouTube IFrame -->
-        <div id="video-title">Enter Baya</div>
-    </div>
-    <div id="video-controls">
-        <button id="toggle-video" class="control-button">Play</button>
-        <button id="restart-video" class="control-button">Restart</button>
-        <progress id="video-progress" value="0" max="100"></progress>
-        <span id="video-time">0:00 / 0:00</span>
-        <button id="skip-video" class="skip-button">Skip</button>
-    </div>
-</div>
+		<div id="video-overlay">
+			<div id="video-container-real">
+				<iframe src="https://www.youtube.com/embed/fli3EuemCxI?rel=0&modestbranding=1&controls=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+				<div id="video-title">Enter Baya</div>
+			</div>
+			<div id="video-controls">
+				<button id="skip-video" class="skip-button">Skip</button>
+			</div>
+		</div>
 
 
 		<!-- Wrapper -->
@@ -80,7 +91,7 @@
 										</ul>
 									</li>
 									-->	
-									<li><a href="https://tridome.sharepoint.com/:b:/s/Hub/EZJT9QKoKNVCmEeSFb2DG1kBT5nwHPznm9TvN1JM1SgIYw?e=bpcdXn" target="_blank">Tridome Proposal</a></li>
+									<li><a href="https://tridome.my.canva.site/baya" target="_blank">Tridome Proposal</a></li>
 								</ul>
 							</nav>
 							<button id="music-toggle" class="music-toggle" title="Toggle Music" data-play="images/music-toggle.png" data-pause="images/music-toggle.png"></button>
